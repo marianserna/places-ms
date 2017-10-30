@@ -1,0 +1,2 @@
+class PlaceImage < ApplicationRecord
+end
