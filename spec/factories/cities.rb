@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :city do
-    name "MyString"
-    country "MyString"
-    province "MyString"
-    lat "9.99"
-    lon "9.99"
+    name "Toronto"
+    country "CA"
+    province "ON"
+    lat "43.65323"
+    lon "-79.38318"
   end
 end
