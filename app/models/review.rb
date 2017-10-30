@@ -1,8 +1,7 @@
 class Review < ApplicationRecord
-  belongs_to :user
   belongs_to :place
 
-  validates :image, :rating, :text, presence: true
+  validates :user_id, :image, :rating, :text, presence: true
   validates :rating, numericality: {
     only_integer: true,
     greater_than_or_equal_to: 1,

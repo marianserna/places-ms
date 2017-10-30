@@ -1,6 +1,5 @@
 class Buddy < ApplicationRecord
-  belongs_to :user
   belongs_to :trip
 
-  validates :email, :uid, presence: true
+  validates :user_id, :email, :uid, presence: true
 end

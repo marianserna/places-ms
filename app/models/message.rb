@@ -1,6 +1,5 @@
 class Message < ApplicationRecord
-  belongs_to :user
   belongs_to :trip
 
-  validates :text, presence:true
+  validates :user_id, :text, presence:true
 end

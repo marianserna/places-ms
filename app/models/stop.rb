@@ -1,4 +1,5 @@
 class Stop < ApplicationRecord
   belongs_to :trip
-  belongs_to :user
+  
+  validates :user_id, presence: true
 end

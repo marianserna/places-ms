@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :review do
-    user_id 1
-    place_id 1
-    image "MyString"
+    image "cat.png"
     rating 1
-    text "MyText"
+    text "Such a fluffy cat"
+    user_id 1
+    place
   end
 end
