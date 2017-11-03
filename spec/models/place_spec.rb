@@ -10,4 +10,13 @@ RSpec.describe Place, type: :model do
       expect(place.invalid?).to eq(true)
     end
   end
+
+  describe 'scopes' do
+    it 'finds places by activity_type' do
+      place = create(:place)
+      expect(Place.by_activity_type('adventure').count).to eq(0)
+
+      expect(Place.by_activity_type('traditional').count).to eq(1)
+    end
+  end
 end
