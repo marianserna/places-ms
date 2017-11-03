@@ -1,5 +1,6 @@
 class Place < ApplicationRecord
   ACTIVITY_TYPES = ['adventure', 'traditional']
+  reverse_geocoded_by :lat, :lon
 
   belongs_to :city
   has_many :place_images

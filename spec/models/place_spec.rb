@@ -26,4 +26,15 @@ RSpec.describe Place, type: :model do
       expect(Place.by_category('culture').count).to eq(0)
     end
   end
+
+  describe 'finding nearby places' do
+    it 'finds places by lat and lon' do
+      place = create(:place)
+      # Testing Toronto (factory)
+      expect(Place.near([43.653226, -79.383184]).count(:all)).to eq(1)
+
+      # Testing Medellin
+      expect(Place.near([6.244203, -75.581212]).count(:all)).to eq(0)
+    end
+  end
 end
