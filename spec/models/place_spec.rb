@@ -18,5 +18,12 @@ RSpec.describe Place, type: :model do
 
       expect(Place.by_activity_type('traditional').count).to eq(1)
     end
+
+    it 'finds places by category' do
+      place = create(:place)
+      expect(Place.by_category('food').count).to eq(1)
+
+      expect(Place.by_category('culture').count).to eq(0)
+    end
   end
 end

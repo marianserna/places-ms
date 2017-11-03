@@ -11,4 +11,7 @@ class Place < ApplicationRecord
     where(activity_type: activity_type)
   }
 
+  scope :by_category, ->(category) {
+    where(category: category)
+  }
 end
