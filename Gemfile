@@ -56,5 +56,12 @@ group :development do
   gem 'pry-rails', '~> 0.3.6'
 end
 
+group :test do
+  # Record tests HTTP interactions and replay them during future tests. Works with Webmock.
+  gem 'vcr', '~> 3.0', '>= 3.0.3'
+  #  Allows stubbing HTTP requests and setting expectations on HTTP requests
+  gem 'webmock', '~> 3.1'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
