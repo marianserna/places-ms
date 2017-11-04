@@ -16,6 +16,8 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+Dotenv::Railtie.load if ['development', 'test'].include?(Rails.env)
+
 module PlacesMs
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -34,6 +36,6 @@ module PlacesMs
         resource '*', :headers => :any, :methods => [:get, :post, :options]
       end
     end
-    
+
   end
 end
