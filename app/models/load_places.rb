@@ -8,6 +8,6 @@ class LoadPlaces
   end
 
   def load
-    @client.spots(lat, lon, detail: true)
+    @client.spots(lat, lon, detail: true, exclude: ['locality', 'political'])
   end
 end
