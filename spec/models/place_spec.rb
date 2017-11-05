@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Place, type: :model do
   describe 'validations' do
     it 'only allows predefined activity types' do
-      place = build(:place)
+      place = create(:place)
       expect(place.valid?).to eq(true)
 
       place.activity_type = 'boring'
