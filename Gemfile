@@ -37,6 +37,9 @@ gem 'geocoder', '~> 1.4', '>= 1.4.4'
 gem 'rack-cors', '~> 1.0', '>= 1.0.2'
 gem 'google_places', '~> 1.0'
 gem 'json', '~> 2.1'
+gem 'fog-aws', '~> 1.4', '>= 1.4.1'
+gem 'mini_magick', '~> 4.8'
+gem 'carrierwave', '~> 1.2', '>= 1.2.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
