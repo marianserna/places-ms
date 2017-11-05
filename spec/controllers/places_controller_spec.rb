@@ -49,8 +49,7 @@ RSpec.describe PlacesController, type: :controller do
         "city" => {
           "id"=>place.city_id,
           "name"=>"Toronto",
-          "country"=>"CA",
-          "province"=>"ON",
+          "country"=>"Canada",
           "lat"=>"43.65323",
           "lon"=>"-79.38318"
         },
@@ -58,7 +57,6 @@ RSpec.describe PlacesController, type: :controller do
         "lat" => "43.64266",
         "lon" => "-79.36966",
         "name" => "St. Lawrence Market",
-        "postal_code" => "M5E 1C3",
       })
     end
 
@@ -81,8 +79,7 @@ RSpec.describe PlacesController, type: :controller do
         "city" => {
           "id"=>place.city_id,
           "name"=>"Toronto",
-          "country"=>"CA",
-          "province"=>"ON",
+          "country"=>"Canada",
           "lat"=>"43.65323",
           "lon"=>"-79.38318"
         },
@@ -90,10 +87,7 @@ RSpec.describe PlacesController, type: :controller do
         "lat" => "43.64266",
         "lon" => "-79.36966",
         "name" => "St. Lawrence Market",
-        "postal_code" => "M5E 1C3",
       })
     end
   end
-
-
 end
