@@ -57,6 +57,7 @@ RSpec.describe PlacesController, type: :controller do
         "lat" => "43.64266",
         "lon" => "-79.36966",
         "name" => "St. Lawrence Market",
+        "place_images" => []
       })
     end
 
@@ -87,6 +88,7 @@ RSpec.describe PlacesController, type: :controller do
         "lat" => "43.64266",
         "lon" => "-79.36966",
         "name" => "St. Lawrence Market",
+        "place_images" => []
       })
     end
   end

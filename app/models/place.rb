@@ -2,7 +2,7 @@ class Place < ApplicationRecord
   ACTIVITY_TYPES = ['adventure', 'traditional']
   reverse_geocoded_by :lat, :lon
 
-  ADVENTURE_CATEGORIES = ['amusement_park', 'bowling_alley', 'campground', 'casino', 'gym', 'nightclub', 'zoo']
+  ADVENTURE_CATEGORIES = ['amusement_park', 'bowling_alley', 'campground', 'casino', 'gym', 'nightclub', 'zoo', 'park']
 
   belongs_to :city
   has_many :place_images
