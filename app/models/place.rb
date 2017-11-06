@@ -27,4 +27,12 @@ class Place < ApplicationRecord
       self.activity_type = 'traditional'
     end
   end
+
+  def self.load_and_save(lat, lon)
+    loader = LoadPlaces.new(lat, lon)
+    result = loader.load
+
+    saver = SavePlaces.new(result)
+    saver.save
+  end
 end
