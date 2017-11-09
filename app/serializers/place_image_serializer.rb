@@ -5,10 +5,22 @@ class PlaceImageSerializer < ActiveModel::Serializer
 
   def card_image
     # access place image that's being serialized using 'object'. See carrierwave docs
-    object.image.card.url
+    url = object.image.card.url
+    local_img_url(url)
   end
 
   def detail_image
-    object.image.detail.url
+    url = object.image.detail.url
+    local_img_url(url)
+  end
+
+  private
+
+  def local_img_url(url)
+    if url.start_with?('http')
+      url
+    else
+      "http://localhost:5000/#{url}"      
+    end
   end
 end
