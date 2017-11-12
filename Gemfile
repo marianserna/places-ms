@@ -40,6 +40,7 @@ gem 'json', '~> 2.1'
 gem 'fog-aws', '~> 1.4', '>= 1.4.1'
 gem 'mini_magick', '~> 4.8'
 gem 'carrierwave', '~> 1.2', '>= 1.2.1'
+gem 'httparty', '~> 0.15.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
