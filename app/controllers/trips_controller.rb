@@ -1,16 +1,8 @@
 class TripsController < ApplicationController
 
   def index
-  # SELECT * FROM trips
-  # WHERE user_id = 9
-  # OR id IN (
-  # 	SELECT trip_id FROM buddies
-  # 	WHERE user_id = 9
-  # )
-
     trip_ids = Buddy.where(user_id: current_user["id"]).pluck(:trip_id)
-    trips = Trip.
-      where("user_id = ? OR id IN (?)", current_user["id"], trip_ids)
+    trips = Trip.where(id: trip_ids)
 
     render json: trips
   end
@@ -19,6 +11,8 @@ class TripsController < ApplicationController
     trip = Trip.new(trip_params)
     trip.user_id = current_user["id"]
     trip.save
+
+    buddy = trip.buddies.create!(user_id: current_user["id"])
 
     render json: trip
   end

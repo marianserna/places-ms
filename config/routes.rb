@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :trips, only: [:index, :create, :show] do
     resources :invitations, only: [:create]
     resources :buddies, only: [:create]
+    resources :messages, only: [:index]
   end
 end
