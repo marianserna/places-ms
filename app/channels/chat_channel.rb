@@ -10,7 +10,8 @@ class ChatChannel < ApplicationCable::Channel
   def talk(data)
     trip = Trip.find(params[:trip_id])
     message = trip.messages.create!({user_id: data["user_id"], text: data["text"]})
+    user_names = NameLookup.names([message])
 
-    ActionCable.server.broadcast("chat_#{params[:trip_id]}", message.attributes.merge({name: 'Pablito'}))
+    ActionCable.server.broadcast("chat_#{params[:trip_id]}", message.attributes.merge({name: user_names[message.user_id.to_s]}))
   end
 end

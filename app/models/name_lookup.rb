@@ -1,0 +1,13 @@
+class NameLookup
+  def self.names(user_id_collection)
+    user_ids = user_id_collection.map(&:user_id)
+
+    response = HTTParty.post(
+      'http://localhost:4000/users/names', 
+      body: {ids: user_ids}.to_json,
+      headers: {'Content-Type' => 'application/json'}
+    )
+    # data looks like: {"1": "Bob", "2": "Alanis"}
+    user_names = JSON.parse(response.body)
+  end
+end
