@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :places, only: [:index, :show]
   resources :trips, only: [:index, :create, :show] do
     resources :invitations, only: [:create]
-    resources :buddies, only: [:create]
+    resources :buddies, only: [:index, :create]
     resources :messages, only: [:index]
   end
 end
