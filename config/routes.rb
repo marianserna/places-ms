@@ -5,5 +5,6 @@ Rails.application.routes.draw do
     resources :invitations, only: [:create]
     resources :buddies, only: [:index, :create]
     resources :messages, only: [:index]
+    resources :stops, only: [:index, :create, :delete]
   end
 end
