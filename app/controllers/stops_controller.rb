@@ -3,6 +3,8 @@ class StopsController < ApplicationController
     trip = Trip.find(params[:trip_id])
     stop = trip.stops.create!(place_id: params[:place_id])
 
+    ActionCable.server.broadcast("trip_#{params[:trip_id]}", {type: 'new_stop', data: stop.place})
+
     render json: stop.place
   end
 
