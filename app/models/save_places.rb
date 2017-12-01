@@ -6,8 +6,12 @@ class SavePlaces
   end
 
   def save
+    start_time = Time.zone.now
+
     self.google_places.each do |gplace|
       save_gplace(gplace)
+      # this is to finish before Heroku's 30 second timeout
+      break if (Time.zone.now - start_time) >= 25
     end
   end
 
