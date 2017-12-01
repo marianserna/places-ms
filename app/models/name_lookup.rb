@@ -3,7 +3,7 @@ class NameLookup
     user_ids = user_id_collection.map(&:user_id)
 
     response = HTTParty.post(
-      'http://localhost:4000/users/names', 
+      "#{ENV.fetch('AUTH_URL')}/users/names",
       body: {ids: user_ids}.to_json,
       headers: {'Content-Type' => 'application/json'}
     )
@@ -13,7 +13,7 @@ class NameLookup
 
   def self.name(user_id)
     response = HTTParty.post(
-      'http://localhost:4000/users/names', 
+      "#{ENV.fetch('AUTH_URL')}/users/names", 
       body: {ids: [user_id]}.to_json,
       headers: {'Content-Type' => 'application/json'}
     )

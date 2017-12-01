@@ -42,6 +42,7 @@ gem 'mini_magick', '~> 4.8'
 gem 'carrierwave', '~> 1.2', '>= 1.2.1'
 gem 'httparty', '~> 0.15.6'
 gem 'mailgun-ruby', '~> 1.1', '>= 1.1.8'
+gem 'redis', '~> 3.3', '>= 3.3.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

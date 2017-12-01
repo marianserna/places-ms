@@ -40,7 +40,7 @@ module PlacesMs
     config.action_mailer.delivery_method = :mailgun
     config.action_mailer.mailgun_settings = {
       api_key: ENV.fetch('MAILGUN_API_KEY'),
-      domain: 'sandbox49b999741d61427eb4be7ece267af07c.mailgun.org',
+      domain: ENV.fetch('MAILGUN_DOMAIN'),
     }
 
   end
