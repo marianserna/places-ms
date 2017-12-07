@@ -13,6 +13,7 @@ class TripsController < ApplicationController
     trip.save
 
     buddy = trip.buddies.create!(user_id: current_user["id"])
+    create_video_room(trip)
 
     render json: trip
   end
@@ -34,5 +35,17 @@ class TripsController < ApplicationController
 
   def trip_params
     params.require(:trip).permit(:name, :completed_at, :rating)
+  end
+
+  def create_video_room(trip)
+    client = Twilio::REST::Client.new ENV.fetch("TWILIO_VIDEO_SID"), ENV.fetch("TWILIO_VIDEO_SECRET")
+
+    p2p_room = client.video.rooms.create(
+      unique_name: 'DailyStandup',
+      type: 'peer-to-peer',
+      enable_turn: false,
+      status_callback: 'http://example.org')
+
+    puts p2p_room.sid
   end
 end
