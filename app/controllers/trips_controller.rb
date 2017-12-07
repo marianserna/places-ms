@@ -32,13 +32,21 @@ class TripsController < ApplicationController
   end
 
   def video_token
+    trip = Trip.find(params[:id])
     # https://www.twilio.com/docs/api/video/identity
-    # create access token
-    token = Twilio::JWT::AccessToken.new(ENV.fetch("TWILIO_ACCOUNT_SID"), ENV.fetch("TWILIO_VIDEO_SID"), ENV.fetch("TWILIO_VIDEO_SECRET"), current_user["id"])
 
     # video grant for token
     grant = Twilio::JWT::AccessToken::VideoGrant.new
-    token.add_grant(grant)
+    grant.room = trip.uuid
+
+    # create access token
+    token = Twilio::JWT::AccessToken.new(
+      ENV.fetch("TWILIO_ACCOUNT_SID"), 
+      ENV.fetch("TWILIO_VIDEO_SID"), 
+      ENV.fetch("TWILIO_VIDEO_SECRET"), 
+      [grant],
+      identity: current_user["name"]
+    )
 
     render json: {token: token.to_jwt}
   end
