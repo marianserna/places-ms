@@ -6,5 +6,9 @@ Rails.application.routes.draw do
     resources :buddies, only: [:index, :create]
     resources :messages, only: [:index]
     resources :stops, only: [:index, :create, :destroy]
+
+    member do
+      get :video_token
+    end
   end
 end

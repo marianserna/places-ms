@@ -31,6 +31,18 @@ class TripsController < ApplicationController
     render json: trip
   end
 
+  def video_token
+    # https://www.twilio.com/docs/api/video/identity
+    # create access token
+    token = Twilio::JWT::AccessToken.new(ENV.fetch("TWILIO_ACCOUNT_SID"), ENV.fetch("TWILIO_VIDEO_SID"), ENV.fetch("TWILIO_VIDEO_SECRET"), current_user["id"])
+
+    # video grant for token
+    grant = Twilio::JWT::AccessToken::VideoGrant.new
+    token.add_grant(grant)
+
+    render json: {token: token.to_jwt}
+  end
+
   private
 
   def trip_params
@@ -41,11 +53,9 @@ class TripsController < ApplicationController
     client = Twilio::REST::Client.new ENV.fetch("TWILIO_VIDEO_SID"), ENV.fetch("TWILIO_VIDEO_SECRET")
 
     p2p_room = client.video.rooms.create(
-      unique_name: 'DailyStandup',
+      unique_name: trip.uuid,
       type: 'peer-to-peer',
-      enable_turn: false,
-      status_callback: 'http://example.org')
-
-    puts p2p_room.sid
+      enable_turn: true
+    )
   end
 end
