@@ -5,7 +5,7 @@ class PlacesController < ApplicationController
 
     if !places.exists?
       begin
-        Place.load_and_save(params[:lat], params[:lon], params[:type])
+        Place.load_and_save(params[:lat], params[:lon], params[:type], current_user["token"])
       rescue GooglePlaces::OverQueryLimitError
       end
     end

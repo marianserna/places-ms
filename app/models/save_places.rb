@@ -1,8 +1,11 @@
 class SavePlaces
+  include Celluloid::IO
+
   attr_accessor :google_places
 
-  def initialize(google_places)
+  def initialize(google_places, user_token)
     @google_places = google_places
+    @user_token = user_token
   end
 
   def save

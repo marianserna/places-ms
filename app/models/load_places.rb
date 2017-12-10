@@ -1,5 +1,4 @@
 class LoadPlaces
-  include Celluloid::IO
   attr_accessor :lat, :lon, :type, :client
 
   def initialize(lat, lon, type)

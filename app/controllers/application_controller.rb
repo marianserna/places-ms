@@ -5,11 +5,11 @@ class ApplicationController < ActionController::Base
 
   def current_user
     # Get the token from here (frontend-ms): Authorization: `Bearer ${user_token}`
-
     # token = request.env["Authorization"].split(' ').last
     authenticate_or_request_with_http_token do |token, options|
       response = HTTParty.get("#{ENV.fetch('AUTH_URL')}/user", headers: {'Authorization' => "Bearer #{token}"})
       user = JSON.parse(response.body)
+      user.merge({"token" => token})
     end
   end
 end
