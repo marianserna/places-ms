@@ -1,7 +1,8 @@
 class BuddiesController < ApplicationController
 
   def index
-    buddies = Buddy.where(trip_id: params[:trip_id])
+    trip = Trip.find_by(uuid: params[:trip_uuid])
+    buddies = trip.buddies
 
     buddies = buddies.map do |buddy|
       # attributes comes from active record
@@ -12,7 +13,7 @@ class BuddiesController < ApplicationController
   end
 
   def create
-    trip = Trip.find(params[:trip_id])
+    trip = Trip.find_by(uuid: params[:trip_uuid])
     buddy = trip.buddies.create!(user_id: current_user["id"], color: Buddy::DEFAULT_COLORS.sample)
 
     # 204 response

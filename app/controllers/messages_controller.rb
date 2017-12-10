@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   def index
-    trip = Trip.find(params[:trip_id])
+    trip = Trip.find_by(uuid: params[:trip_uuid])
     recent_messages = trip.messages.last(20)
 
     user_names = NameLookup.names(recent_messages)

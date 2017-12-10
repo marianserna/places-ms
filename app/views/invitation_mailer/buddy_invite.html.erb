@@ -1,5 +1,5 @@
 <p>Hey there! <%= @user["name"] %> has invited you to join their <strong><%= @trip.name %></strong> plan in Wanderers.</p>
 
 <p>Click
-  <a href="<%= ENV.fetch('FRONTEND_URL') %>/trips/<%= @trip.id %>/join">HERE</a> to become a trip buddy!! ✈️
+  <a href="<%= ENV.fetch('FRONTEND_URL') %>/trips/<%= @trip.uuid %>/join">HERE</a> to become a trip buddy!! ✈️
 </p>

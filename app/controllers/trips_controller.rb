@@ -19,20 +19,20 @@ class TripsController < ApplicationController
   end
 
   def show
-    trip = Trip.find(params[:id])
+    trip = Trip.find_by(uuid: params[:uuid])
 
     render json: trip
   end
 
   def update
-    trip = Trip.find(params[:id])
+    trip = Trip.find_by(uuid: params[:uuid])
     trip.update_attributes(trip_params)
 
     render json: trip
   end
 
   def video_token
-    trip = Trip.find(params[:id])
+    trip = Trip.find_by(uuid: params[:uuid])
     # https://www.twilio.com/docs/api/video/identity + https://www.twilio.com/docs/api/chat/guides/create-tokens
 
     # video grant for token

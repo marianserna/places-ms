@@ -7,6 +7,7 @@ class PlaceSearch
 
     saver = SavePlaces.new(result, user_token)
     saver.save
+    
     self.terminate
   end
 end

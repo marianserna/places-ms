@@ -15,7 +15,6 @@ class SavePlaces
       # this is to finish before Heroku's 30 second timeout
       # break if (Time.zone.now - start_time) >= 25
     end
-    self.terminate
   end
 
   private
