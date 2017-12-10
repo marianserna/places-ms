@@ -28,8 +28,8 @@ class Place < ApplicationRecord
     end
   end
 
-  def self.load_and_save(lat, lon)
-    loader = LoadPlaces.new(lat, lon)
+  def self.load_and_save(lat, lon, type)
+    loader = LoadPlaces.new(lat, lon, type)
     result = loader.load
 
     saver = SavePlaces.new(result)

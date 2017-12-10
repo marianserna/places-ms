@@ -1,12 +1,11 @@
 class PlacesController < ApplicationController
   def index
-    places = Place.near([params[:lat], params[:lon]], 5, units: :km)
-    places = places.by_activity_type(params[:activity_type]) if params[:activity_type]
-    places = places.by_category(params[:category]) if params[:category]
+    places = Place.near([params[:lat], params[:lon]], 20, units: :km)
+    places = places.by_category(params[:type]) if params[:type].present?
 
     if !places.exists?
       begin
-        Place.load_and_save(params[:lat], params[:lon])
+        Place.load_and_save(params[:lat], params[:lon], params[:type])
       rescue GooglePlaces::OverQueryLimitError
       end
     end

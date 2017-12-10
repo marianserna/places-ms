@@ -33,7 +33,7 @@ class TripsController < ApplicationController
 
   def video_token
     trip = Trip.find(params[:id])
-    # https://www.twilio.com/docs/api/video/identity
+    # https://www.twilio.com/docs/api/video/identity + https://www.twilio.com/docs/api/chat/guides/create-tokens
 
     # video grant for token
     grant = Twilio::JWT::AccessToken::VideoGrant.new
