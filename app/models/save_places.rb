@@ -1,7 +1,6 @@
 class SavePlaces
-  include Celluloid::IO
 
-  attr_accessor :google_places
+  attr_accessor :google_places, :user_token
 
   def initialize(google_places, user_token)
     @google_places = google_places
@@ -14,15 +13,15 @@ class SavePlaces
     self.google_places.each do |gplace|
       save_gplace(gplace)
       # this is to finish before Heroku's 30 second timeout
-      break if (Time.zone.now - start_time) >= 25
+      # break if (Time.zone.now - start_time) >= 25
     end
+    self.terminate
   end
 
   private
 
   def save_gplace(gplace)
     city = find_or_create_city(gplace)
-
     place = city.places.near([gplace.lat, gplace.lng]).where(name: gplace.name).first
 
     return if place.present?
@@ -37,6 +36,13 @@ class SavePlaces
     )
 
     save_place_images(place, gplace.photos.slice(0, 2))
+
+    place_attributes = ActiveModelSerializers::SerializableResource.new(
+      place
+    ).serializable_hash
+
+    ActionCable.server.broadcast("user_#{user_token}", {type: 'new_place', data: place_attributes})
+
     place
   end
 

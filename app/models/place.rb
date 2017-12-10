@@ -1,4 +1,5 @@
 class Place < ApplicationRecord
+
   ACTIVITY_TYPES = ['adventure', 'traditional']
   reverse_geocoded_by :lat, :lon
 
@@ -28,11 +29,4 @@ class Place < ApplicationRecord
     end
   end
 
-  def self.load_and_save(lat, lon, type, user_token)
-    loader = LoadPlaces.new(lat, lon, type)
-    result = loader.load
-
-    saver = SavePlaces.new(result, user_token)
-    saver.async.save
-  end
 end
