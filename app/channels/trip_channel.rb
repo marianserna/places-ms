@@ -15,4 +15,8 @@ class TripChannel < ApplicationCable::Channel
 
     ActionCable.server.broadcast("trip_#{params[:trip_uuid]}", {type: 'new_message', data: message_attributes})
   end
+
+  def video_join(data)
+    ActionCable.server.broadcast("trip_#{params[:trip_uuid]}", {type: 'video_join', data: data})
+  end
 end
