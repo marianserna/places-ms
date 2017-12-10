@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe SavePlaces do
   describe 'save', :vcr do
     it 'saves places from google' do
-      loader = LoadPlaces.new(45.837159, -78.379124)
+      loader = LoadPlaces.new(45.837159, -78.379124, 'park')
       google_places = loader.load
 
-      saver = SavePlaces.new([google_places[0]])
+      saver = SavePlaces.new([google_places.first], '12345')
       saver.save
       first_place = Place.first
 

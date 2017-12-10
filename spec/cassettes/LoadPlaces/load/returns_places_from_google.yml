@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyBIxG73uhec1_rmjlquh4H0xyNBm_Sb0sk&keyword=&language=&location=43.61887000,-80.14418900&name=&radius=1000&rankby=
+    uri: https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyBIxG73uhec1_rmjlquh4H0xyNBm_Sb0sk&keyword=&language=&location=43.61887000,-80.14418900&name=&radius=1000&rankby=&types=gym
     body:
       encoding: US-ASCII
       string: ''

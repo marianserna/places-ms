@@ -1,6 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe PlacesController, type: :controller do
+  # Run before each test. 
+  before(:each) do
+    # Each request expects a token to be sent
+    request.headers.merge!({Authorization: "Bearer 12345"})
+
+    # This avoids Authenticator having to do an API call to authenticate-ms
+    allow(Authenticator).to receive(:getUser).and_return({
+      "token" => "12345",
+      "name" => "Pedrito Pedrosa",
+      "id" => 1
+    })
+  end
+
   describe 'index' do
     it 'doesnt find place by lat and lon' do
       create(:place)
