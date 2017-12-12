@@ -8,7 +8,7 @@ class SavePlaces
   end
 
   def save
-    start_time = Time.zone.now
+    # start_time = Time.zone.now
 
     self.google_places.each do |gplace|
       save_gplace(gplace)
@@ -21,6 +21,7 @@ class SavePlaces
 
   def save_gplace(gplace)
     city = find_or_create_city(gplace)
+    # make sure gplace isnt in db yet
     place = city.places.near([gplace.lat, gplace.lng]).where(name: gplace.name).first
 
     return if place.present?
@@ -34,7 +35,7 @@ class SavePlaces
       category: gplace.types[0]
     )
 
-    save_place_images(place, gplace.photos.slice(0, 2))
+    save_place_images(place, gplace.photos.slice(0, 1))
 
     place_attributes = ActiveModelSerializers::SerializableResource.new(
       place
