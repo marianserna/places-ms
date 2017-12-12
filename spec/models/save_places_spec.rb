@@ -14,7 +14,7 @@ RSpec.describe SavePlaces do
       expect(City.first.name).to eq("Rural Area")
       expect(Place.count).to eq(1)
       expect(first_place.name).to eq('Algonquin Provincial Park')
-      expect(first_place.place_images.count).to eq(2)
+      expect(first_place.place_images.count).to eq(1)
     end
   end
 end

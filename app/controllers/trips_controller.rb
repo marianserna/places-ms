@@ -37,13 +37,14 @@ class TripsController < ApplicationController
 
     # video grant for token
     grant = Twilio::JWT::AccessToken::VideoGrant.new
+    # each trip has a chat room
     grant.room = trip.uuid
 
     # create access token
     token = Twilio::JWT::AccessToken.new(
-      ENV.fetch("TWILIO_ACCOUNT_SID"), 
-      ENV.fetch("TWILIO_VIDEO_SID"), 
-      ENV.fetch("TWILIO_VIDEO_SECRET"), 
+      ENV.fetch("TWILIO_ACCOUNT_SID"),
+      ENV.fetch("TWILIO_VIDEO_SID"),
+      ENV.fetch("TWILIO_VIDEO_SECRET"),
       [grant],
       identity: current_user["name"]
     )
